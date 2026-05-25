@@ -24,6 +24,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-links a.active::after,.nav-links a:hover::after{transform:scaleX(1)}
 .nav-admin-btn{background:transparent;border:1.5px solid rgba(255,255,255,0.15);border-radius:8px;padding:8px 20px;color:var(--muted);font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none;display:flex;align-items:center;gap:7px}
 .nav-admin-btn:hover{border-color:var(--green);color:var(--green)}
+.nav-contact-mobile{display:none;background:var(--green);color:var(--black);border:none;border-radius:8px;padding:8px 20px;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px;text-decoration:none}
 
 .page{display:none}.page.active{display:block}
 
@@ -155,6 +156,7 @@ input.err,textarea.err{border-color:#f87171}
 @media(max-width:768px){
   nav{padding:0 20px}
   .nav-links{display:none}
+  .nav-contact-mobile{display:flex}
   .steps,.contact-inner,.admin-stats{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .section-pad,.sports-section,.cta-section{padding:70px 24px}
@@ -175,6 +177,7 @@ input.err,textarea.err{border-color:#f87171}
     <li><a id="nav-home" class="active">Home</a></li>
     <li><a id="nav-contact">Contact</a></li>
   </ul>
+  <a class="nav-contact-mobile" id="navContactMobile">Contact</a>
   <a class="nav-admin-btn" id="adminNavBtn">🔐 Admin</a>
 </nav>
 
@@ -352,7 +355,7 @@ input.err,textarea.err{border-color:#f87171}
 </div>
 
 <script>
-var ADMIN_USER='admin',ADMIN_PASS='AplikacijaPromeni1.';
+var ADMIN_USER='admin',ADMIN_PASS='sportbuddy2026';
 
 function toggleReply(id,email){
   var el=document.getElementById('reply-'+id);
@@ -401,6 +404,7 @@ function showPage(n){
 function bind(id,fn){var el=document.getElementById(id);if(el) el.addEventListener('click',fn)}
 
 document.addEventListener('DOMContentLoaded',function(){
+  bind('navContactMobile',function(e){e.preventDefault();showPage('contact')});
   bind('backToAdminBtn',function(){showPage('admin')});
   bind('logoBtn',function(e){e.preventDefault();showPage('home')});
   bind('nav-home',function(e){e.preventDefault();showPage('home')});
